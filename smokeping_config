@@ -1,0 +1,150 @@
+*** General ***
+owner    = Peter Random
+contact  = some@address.nowhere
+mailhost = my.mail.host
+sendmail = /sbin/sendmail
+imgcache = /opt/smokeping/htdocs/cache
+imgurl   = cache
+datadir  = /opt/smokeping/htdocs/data
+piddir  = /opt/smokeping/htdocs/var
+cgiurl   = http://some.url/smokeping.cgi
+smokemail = /opt/smokeping/etc/smokemail.dist
+tmail = /opt/smokeping/etc/tmail.dist
+# specify this to get syslog logging
+syslogfacility = local0
+
+*** Alerts ***
+#to = |/opt/smokeping/bin/alert.sh
+to = 12345678@qq.com
+from =  smokealert@company.xy
+
+# 定义各种告警规则,有两种类型，（延时|丢包）
++hostdown
+type = loss
+# in percent
+pattern = ==0%,==0%,==0%,==U
+comment = 对端无响应
+
++hight-loss
+type = loss
+# in percent
+pattern = ==0%,==0%,==0%,==0%,>20%,>20%,>20%
+comment = 连续3次采样-丢包率超过20%
+
++some-loss
+type = loss
+# in percent
+pattern = >0%,*12*,>0%,*12*,>0%
+comment = 间断性丢包
+
++enlarge-rtt
+type = rtt
+# in milli seconds
+pattern = <100,<100,<100,<100,<100,<150,>150,>150,>150
+comment = 连续3次采样延迟增大-超过150ms
+
++rttbadstart
+type = rtt
+# in milliseconds
+pattern = ==S,==U
+comment = offline at startup
+
+*** Database ***
+step     = 60
+pings    = 20
+
+# consfn mrhb steps total
+
+AVERAGE  0.5   1  1008
+AVERAGE  0.5  12  4320
+    MIN  0.5  12  4320
+    MAX  0.5  12  4320
+AVERAGE  0.5 144   720
+    MAX  0.5 144   720
+    MIN  0.5 144   720
+
+*** Presentation ***
+charset = utf-8
+
+
+template = /opt/smokeping/etc/basepage.html.dist
+htmltitle = yes
+graphborders = no
+
+
+
++ charts
+menu = 排行榜
+title = 排行榜
+
+++ stddev
+sorter = StdDev(entries=>4)
+title = 综合指数排行
+menu = 综合指数排行
+format = 综合指数 %f
+
+++ max
+sorter = Max(entries=>5)
+title = 最大延迟排行
+menu = 最大延迟排行
+format = 最大延迟时间 %f 秒
+
+++ loss
+sorter = Loss(entries=>5)
+title = 丢包率排行
+menu = 丢包率排行
+format = 丢包 %f
+
+++ median
+sorter = Median(entries=>5)
+title = 平均延迟排行
+menu = 平均延迟排行
+format = 平均延迟 %f 秒+ median
+
++ overview
+width = 600
+height = 50
+range = 10h
+
++ detail
+width = 600
+height = 200
+unison_tolerance = 2
+
+"Last 3 Hours"    3h
+"Last 30 Hours"   30h
+"Last 10 Days"    10d
+"Last 90 Days"    90d
+
+*** Probes ***
++ FPing
+binary = /usr/sbin/fping
+#可以设置源IP地址，适用于多IP的服务器，（比如组专线内网+公网）服务器
+#sourceaddressn = 1.1.1.1
+
+
++ TCPPing  # 检测端口，有些高防IP不让ping的
+binary = /opt/smokeping/bin/tcpping-smokeping
+# tcpping是一个shell脚本并调用traceroute，测试:tcpping-smokeping  -C -x 10  attacker  80
+#https://github.com/tobbez/tcpping-smokeping
+pings = 5
+port = 80
+
+*** Slaves ***
+#secrets=/opt/smokeping/etc/smokeping_secrets.dist
+#+slave01
+#display_name=从节点01
+#location=China
+#color=ff0000
+
+
+*** Targets ***
+probe = FPing
+
+menu = Top
+title = 网络质量监控系统
+remark = 如果您是合法管理员，那么欢迎您，如果不是，请立即离开          Only legal administrators are welcome, if you are not, please leave immediately
+
+#加载额外的监控主机（将监控主机，单独成一个文件）
+@include Monitoring_Nodes/targets
+@include Monitoring_Nodes/gaofang
