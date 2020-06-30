@@ -1,0 +1,17 @@
++ gaofang
+probe = TCPPing # 此处调用了tcpping来测试，不写的话默认是Fping
+menu = 高防IP-80端口监控
+title = 高防IP-80端口监控
+alerts = hight-loss
+
+++ SJ-IDC  #不可使用中文
+menu = SJ-IDC高防IP-156.230.63.246
+title = SJ-IDC高防IP-156.230.63.246
+#alerts = hostdown
+host = 156.230.63.246
+
+++ LA-IDC
+menu = LA-40G防御IP-23.234.60.15
+title = LA-40G防御IP-23.234.60.15
+#alerts = hostdown
+host = 23.234.60.15
