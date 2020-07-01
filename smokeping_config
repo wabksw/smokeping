@@ -131,7 +131,7 @@ pings = 5
 port = 80
 
 *** Slaves ***
-#secrets=/opt/smokeping/etc/smokeping_secrets.dist
+secrets=/opt/smokeping/etc/smokeping_secrets.dist
 #+slave01
 #display_name=从节点01
 #location=China
