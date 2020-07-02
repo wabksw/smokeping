@@ -8,3 +8,4 @@ SmokePing-2.7.2一键安装脚本
 - 默认支持中文显示
 - 默认登录账号密码为：admin/admin@123
 
+![图片1]("https://github.com/wabksw/smokeping/raw/master/1.png")
