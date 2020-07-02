@@ -4,14 +4,14 @@ menu = 高防IP-80端口监控
 title = 高防IP-80端口监控
 alerts = hight-loss
 
-++ SJ-IDC  #不可使用中文
-menu = SJ-IDC高防IP-156.230.63.246
-title = SJ-IDC高防IP-156.230.63.246
+++ gg-IDC  #不可使用中文
+menu = SJ-IDC高防IP-216.58.197.100
+title = SJ-IDC高防IP-216.58.197.100
 #alerts = hostdown
-host = 156.230.63.246
+host = 216.58.197.100
 
-++ LA-IDC
-menu = LA-40G防御IP-23.234.60.15
-title = LA-40G防御IP-23.234.60.15
+++ BD-IDC
+menu = LA-40G防御IP-14.215.177.39
+title = LA-40G防御IP-14.215.177.39
 #alerts = hostdown
-host = 23.234.60.15
+host = 14.215.177.39
