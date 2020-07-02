@@ -10,7 +10,7 @@ SmokePing-2.7.2一键安装脚本
 
 ![图片1](https://github.com/wabksw/smokeping/raw/master/1.png)
 ![图片2](https://github.com/wabksw/smokeping/raw/master/2.png)
-
+![图片3](https://github.com/wabksw/smokeping/raw/master/3.png)
 
 ### 配置文件地址
 - http配置文件：/etc/httpd/conf.d/smokeping.conf
@@ -23,4 +23,5 @@ SmokePing-2.7.2一键安装脚本
 
 ### 参考资料
 [centos7安装smokeping2.7.2](https://www.wsfnk.com/archives/610.html)
+<br>
 [参考脚本来源](https://github.com/wabksw/smokeping-onekey)
