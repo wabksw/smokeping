@@ -127,7 +127,7 @@ Mubiao() {
 
 ####################钉钉机器人告警执行部分#######################
 #　注意：为钉钉机器人告警，重新处理变量，因为钉钉机器人告警里（变量的内容不能包含空格）
-curl 'https://oapi.dingtalk.com/robot/send?access_token=3f2352b1a10e26f110e738a9582b45dd60c2ffc3ac3dff430563fb31b6827e97' \
+curl 'https://oapi.dingtalk.com/robot/send?access_token=xxxxxxxx' \
    -H 'Content-Type: application/json' \
    -d '
 {
